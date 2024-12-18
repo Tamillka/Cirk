@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class CursorScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Texture2D[] cursors;
+
     void Start()
     {
-        
+        DefaultCursor();    
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DefaultCursor()
     {
-        
+        Cursor.SetCursor(cursors[0], Vector2.zero, CursorMode.ForceSoftware);
+    }
+
+    public void OnButton()
+    {
+        Cursor.SetCursor(cursors[1], Vector2.zero, CursorMode.ForceSoftware);
+    }
+
+    public void ClickedButton()
+    {
+        Cursor.SetCursor(cursors[2], Vector2.zero, CursorMode.ForceSoftware);
     }
 }
