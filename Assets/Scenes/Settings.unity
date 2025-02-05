@@ -1479,6 +1479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeScript: {fileID: 729159992}
+  saveLoadScript: {fileID: 0}
 --- !u!114 &783602244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3162,8 +3163,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1438860160}
-  - component: {fileID: 1438860159}
   - component: {fileID: 1438860161}
+  - component: {fileID: 1438860163}
   - component: {fileID: 1438860162}
   m_Layer: 0
   m_Name: BGMusic
@@ -3172,7 +3173,53 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!82 &1438860159
+--- !u!4 &1438860160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438860158}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1438860161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438860158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a2be2faa0565e4181ba9466ad714f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 1934719662}
+--- !u!114 &1438860162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438860158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91c0f5abe1972734cb761b0570e42bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicDropdown: {fileID: 1484451234}
+  musicTracks:
+  - {fileID: 8300000, guid: eb7f10105313640a18ce7926041a4d76, type: 3}
+  - {fileID: 8300000, guid: 5b1ed8fbe89154eaf96723b6e5f0aad3, type: 3}
+  - {fileID: 8300000, guid: bea93a38b71b64b598109b3a3b1a0048, type: 3}
+  - {fileID: 8300000, guid: 458dd8822518c4f37bc3edba9b6c57d9, type: 3}
+--- !u!82 &1438860163
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3182,9 +3229,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 458dd8822518c4f37bc3edba9b6c57d9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: eb7f10105313640a18ce7926041a4d76, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.718
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3268,52 +3315,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!4 &1438860160
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438860158}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1438860161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438860158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01a2be2faa0565e4181ba9466ad714f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeSlider: {fileID: 1934719662}
---- !u!114 &1438860162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438860158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91c0f5abe1972734cb761b0570e42bbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicDropdown: {fileID: 1484451234}
-  musicTracks:
-  - {fileID: 8300000, guid: eb7f10105313640a18ce7926041a4d76, type: 3}
-  - {fileID: 8300000, guid: 5b1ed8fbe89154eaf96723b6e5f0aad3, type: 3}
-  - {fileID: 8300000, guid: bea93a38b71b64b598109b3a3b1a0048, type: 3}
-  - {fileID: 8300000, guid: 458dd8822518c4f37bc3edba9b6c57d9, type: 3}
 --- !u!1 &1439619107
 GameObject:
   m_ObjectHideFlags: 0
@@ -3371,7 +3372,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CIRCUS 2.5 D
+  m_text: SETTINGS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7289c36831a23604786e9e56657c9150, type: 2}
   m_sharedMaterial: {fileID: -6869345562629674357, guid: 7289c36831a23604786e9e56657c9150, type: 2}
@@ -3404,7 +3405,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535

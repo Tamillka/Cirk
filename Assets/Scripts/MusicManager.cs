@@ -5,49 +5,56 @@ using UnityEngine.UI;
 
 public class MusicManager : MonoBehaviour
 {
-    [SerializeField] private Dropdown musicDropdown; // Reference to the Dropdown UI for music selection
+    [SerializeField] private Dropdown musicDropdown; // Reference to the Dropdown UI for music selection (only used in settings)
     [SerializeField] private AudioClip[] musicTracks; // Array of possible music tracks
 
     private AudioSource audioSource;
+    private static MusicManager instance;
+
+    private void Awake()
+    {
+        // Ensure only one instance exists
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
 
-        // Load and set the previously selected music track, if any
-        if (PlayerPrefs.HasKey("MusicTrack"))
-        {
-            int savedTrackIndex = PlayerPrefs.GetInt("MusicTrack");
-            audioSource.clip = musicTracks[savedTrackIndex];
-            audioSource.Play();
-            musicDropdown.value = savedTrackIndex;
-        }
-        else
-        {
-            // Default to the first track if no music is saved
-            audioSource.clip = musicTracks[0];
-            audioSource.Play();
-            musicDropdown.value = 0;
-        }
-
-        // Add listener to the dropdown to change the music when a new option is selected
-        musicDropdown.onValueChanged.AddListener(ChangeMusic);
-    }
-
-    // Method to handle music change based on the dropdown value
-    public void ChangeMusic(int index)
-    {
-        // Set the new music track
-        audioSource.clip = musicTracks[index];
+        // Load saved music track or use default
+        int savedTrackIndex = PlayerPrefs.GetInt("MusicTrack", 0);
+        audioSource.clip = musicTracks[savedTrackIndex];
         audioSource.Play();
 
-        // Save the selected track index to PlayerPrefs
+        // If the dropdown is assigned (only in settings scene), set its value and add listener
+        if (musicDropdown != null)
+        {
+            musicDropdown.value = savedTrackIndex;
+            musicDropdown.onValueChanged.AddListener(ChangeMusic);
+        }
+    }
+
+    public void ChangeMusic(int index)
+    {
+        audioSource.clip = musicTracks[index];
+        audioSource.Play();
         PlayerPrefs.SetInt("MusicTrack", index);
     }
 
     private void OnDestroy()
     {
-        // Clean up the listener when the object is destroyed
-        musicDropdown.onValueChanged.RemoveListener(ChangeMusic);
+        if (musicDropdown != null)
+        {
+            musicDropdown.onValueChanged.RemoveListener(ChangeMusic);
+        }
     }
 }

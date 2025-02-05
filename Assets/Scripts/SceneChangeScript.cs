@@ -7,6 +7,7 @@ using System;
 public class SceneChangeScript : MonoBehaviour
 {
     public FadeScript fadeScript;
+    public SaveLoadScript saveLoadScript;
 
     public void CloseGame()
     {
@@ -40,6 +41,7 @@ public class SceneChangeScript : MonoBehaviour
         }else if (string.Equals(command, "play", StringComparison.OrdinalIgnoreCase))
         {
             yield return fadeScript.FadeIn(0.1f);
+            saveLoadScript.SaveGame(character, name);
             SceneManager.LoadScene(1, LoadSceneMode.Single);
         }
         else if (string.Equals(command, "settings", StringComparison.OrdinalIgnoreCase))
