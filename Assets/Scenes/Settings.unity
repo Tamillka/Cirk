@@ -3219,6 +3219,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5b1ed8fbe89154eaf96723b6e5f0aad3, type: 3}
   - {fileID: 8300000, guid: bea93a38b71b64b598109b3a3b1a0048, type: 3}
   - {fileID: 8300000, guid: 458dd8822518c4f37bc3edba9b6c57d9, type: 3}
+  backgroundMusicSource: {fileID: 1438860163}
 --- !u!82 &1438860163
 AudioSource:
   m_ObjectHideFlags: 0
