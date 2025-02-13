@@ -1,30 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class VolumeControl : MonoBehaviour
 {
-    [SerializeField] private Slider volumeSlider; // Reference to the Slider in the UI
+    [SerializeField] private Slider volumeSlider;
 
     private void Start()
     {
-        // Set the slider's value based on the current volume of the AudioListener
-        volumeSlider.value = AudioListener.volume;
+        if (volumeSlider == null)
+        {
+            volumeSlider = FindObjectOfType<Slider>();
+        }
 
-        // Add a listener to change the volume whenever the slider value changes
+        // Load saved volume or default to 1
+        float savedVolume = PlayerPrefs.GetFloat("Volume", 1f);
+        AudioListener.volume = savedVolume;
+        volumeSlider.value = savedVolume;
+
         volumeSlider.onValueChanged.AddListener(UpdateVolume);
     }
-
-    // This method is called when the slider value changes
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     public void UpdateVolume(float volume)
     {
-        AudioListener.volume = volume; // Change the global audio volume (affects all AudioSources)
+        AudioListener.volume = volume;
+        PlayerPrefs.SetFloat("Volume", volume);
+        PlayerPrefs.Save();
     }
 
     private void OnDestroy()
     {
-        // Remove the listener when the object is destroyed to prevent memory leaks
-        volumeSlider.onValueChanged.RemoveListener(UpdateVolume);
+        if (volumeSlider != null)
+        {
+            volumeSlider.onValueChanged.RemoveListener(UpdateVolume);
+        }
     }
 }
