@@ -1,28 +1,56 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class VolumeControl : MonoBehaviour
 {
     [SerializeField] private Slider volumeSlider;
 
-    private void Start()
-    {
-        if (volumeSlider == null)
-        {
-            volumeSlider = FindObjectOfType<Slider>();
-        }
+    private static VolumeControl instance;
 
-        // Load saved volume or default to 1
-        float savedVolume = PlayerPrefs.GetFloat("Volume", 1f);
-        AudioListener.volume = savedVolume;
-        volumeSlider.value = savedVolume;
-
-        volumeSlider.onValueChanged.AddListener(UpdateVolume);
-    }
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
+
+    private void Start()
+    {
+        LoadVolume();
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        TryFindSlider();
+    }
+
+    private void TryFindSlider()
+    {
+        volumeSlider = FindObjectOfType<Slider>();
+        if (volumeSlider != null)
+        {
+            volumeSlider.value = AudioListener.volume;
+            volumeSlider.onValueChanged.RemoveAllListeners();
+            volumeSlider.onValueChanged.AddListener(UpdateVolume);
+        }
+    }
+
+    private void LoadVolume()
+    {
+        float savedVolume = PlayerPrefs.GetFloat("Volume", 1f);
+        AudioListener.volume = savedVolume;
+    }
+
     public void UpdateVolume(float volume)
     {
         AudioListener.volume = volume;
@@ -32,9 +60,6 @@ public class VolumeControl : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (volumeSlider != null)
-        {
-            volumeSlider.onValueChanged.RemoveListener(UpdateVolume);
-        }
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

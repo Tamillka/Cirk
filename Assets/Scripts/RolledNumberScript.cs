@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class RolledNumberScript : MonoBehaviour
@@ -9,7 +8,6 @@ public class RolledNumberScript : MonoBehaviour
     DiceRollScript diceRollScript;
     [SerializeField]
     TMP_Text rolledNumberText;
-
 
     // Start is called before the first frame update
     void Awake()
@@ -27,6 +25,7 @@ public class RolledNumberScript : MonoBehaviour
                 rolledNumberText.text = "?";
         else
             Debug.LogError("DiceRollScript not found in await scene");
-        
+
     }
 }
+   

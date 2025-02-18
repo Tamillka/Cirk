@@ -448,6 +448,7 @@ GameObject:
   - component: {fileID: 24777632}
   - component: {fileID: 24777633}
   - component: {fileID: 24777634}
+  - component: {fileID: 24777635}
   m_Layer: 0
   m_Name: BGMusic
   m_TagString: Untagged
@@ -584,7 +585,21 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5b1ed8fbe89154eaf96723b6e5f0aad3, type: 3}
   - {fileID: 8300000, guid: bea93a38b71b64b598109b3a3b1a0048, type: 3}
   - {fileID: 8300000, guid: 458dd8822518c4f37bc3edba9b6c57d9, type: 3}
+  - {fileID: 8300000, guid: 3fc26869a512b4e5187c9be6310ad8c2, type: 3}
   backgroundMusicSource: {fileID: 24777633}
+--- !u!114 &24777635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24777631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a2be2faa0565e4181ba9466ad714f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 60830124}
 --- !u!1 &60830123
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657886, g: 0.4964127, b: 0.57481724, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Option A
+  m_Text: Sound 1
 --- !u!222 &12182029
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3045,6 +3045,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5b1ed8fbe89154eaf96723b6e5f0aad3, type: 3}
   - {fileID: 8300000, guid: bea93a38b71b64b598109b3a3b1a0048, type: 3}
   - {fileID: 8300000, guid: 458dd8822518c4f37bc3edba9b6c57d9, type: 3}
+  - {fileID: 8300000, guid: 3fc26869a512b4e5187c9be6310ad8c2, type: 3}
   backgroundMusicSource: {fileID: 1438860163}
 --- !u!82 &1438860163
 AudioSource:
@@ -3441,11 +3442,15 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Option A
+    - m_Text: Sound 1
       m_Image: {fileID: 0}
-    - m_Text: Option B
+    - m_Text: Sound 2
       m_Image: {fileID: 0}
-    - m_Text: Option C
+    - m_Text: Sound 3
+      m_Image: {fileID: 0}
+    - m_Text: Sound 4
+      m_Image: {fileID: 0}
+    - m_Text: Sound 5
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
